@@ -212,14 +212,16 @@ export function ResumeTemplate(data: ResumeData): string {
 
             <!-- Education -->
             <h2>EDUCATION</h2>
+            ${data.education && data.education.length > 0 ? `
             <div class="education-entry">
                 <div class="education-header">
-                    <h3>${data.education[0].institution}</h3>
-                    <span class="date">${data.education[0].startDate} – ${data.education[0].endDate}</span>
+                    <h3>${data.education[0]?.institution || ''}</h3>
+                    <span class="date">${data.education[0]?.startDate || ''} – ${data.education[0]?.endDate || ''}</span>
                 </div>
-                <p class="job-title">${data.education[0].studyType}</p>
-                <p style="font-size: 10px; margin: 0;"><strong>Relevant Coursework:</strong> ${data.education[0].courses.join(', ')}</p>
+                <p class="job-title">${data.education[0]?.studyType || ''}</p>
+                <p style="font-size: 10px; margin: 0;"><strong>Relevant Coursework:</strong> ${data.education[0]?.courses?.join(', ') || ''}</p>
             </div>
+            ` : ''}
         </div>
     </body>
     </html>

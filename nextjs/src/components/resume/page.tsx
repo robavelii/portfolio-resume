@@ -1,10 +1,8 @@
 import { ResumePreview } from "@/components/resume/ResumePreview";
-import { getResumeData } from "@/lib/resume-data";
 import { Button } from "@/components/ui/Button";
 import Link from "next/link";
 
-export default async function ResumePage() {
-  const resumeData = await getResumeData();
+export default function ResumePage() {
   
   return (
     <div className="container mx-auto px-4 py-8">
@@ -26,7 +24,7 @@ export default async function ResumePage() {
       </div>
       
       <div className="border rounded-lg overflow-hidden bg-white shadow-md">
-        <ResumePreview data={resumeData} />
+        <ResumePreview />
       </div>
     </div>
   );
