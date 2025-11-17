@@ -1,0 +1,116 @@
+{
+  "basics": {
+    "name": "Robel Fekadu Hailu",
+    "label": "Senior Software Engineer & Solutions Architect",
+    "email": "robelfekadu@gmail.com",
+    "phone": "(251) 916-416-707",
+    "location": "Addis Ababa, Ethiopia",
+    "profiles": [
+      { "network": "LinkedIn", "url": "https://linkedin.com/in/robavelii" },
+      { "network": "GitHub", "url": "https://github.com/robavelii" }
+    ]
+  },
+  "summary": "Senior Software Engineer with several years designing and implementing enterprise systems for healthcare, government, and media. Expertise in full-stack development, system architecture, and team collaboration. Delivered multiple production systems and improved operational workflows through targeted technology decisions.",
+  "work": [
+    {
+      "name": "Mereb Technologies",
+      "position": "Senior Full Stack Developer",
+      "startDate": "Apr 2025",
+      "endDate": "Present",
+      "highlights": [
+        "Overseeing customization, implementation and deployment of a Bahmni-based EMR (LeanHealth) integrated with Odoo ERP and OpenMRS to support end-to-end clinical workflows including registration, triage, appointments, pharmacy, billing, and labs.",
+        "Developed several custom Odoo modules to support automated quotation generation, sales attribution, and payment integration.",
+        "Implemented an SMS notification microservice used for timely delivery of lab results and appointment reminders, handling high-volume communication flows.",
+        "Designed and maintained containerized infrastructure using Docker and Nginx reverse proxy to support environment-based deployments and secure hosting.",
+        "Planned and executed migrations of large patient datasets from legacy systems, ensuring data mapping and integrity validation during CSV import workflows."
+      ]
+    },
+    {
+      "name": "Amref Health Africa",
+      "position": "Senior Software Engineering Consultant",
+      "startDate": "Dec 2024",
+      "endDate": "May 2025",
+      "highlights": [
+        "Architected and delivered a Telegram-based polling and feedback collection system used by health teams for real-time data capture and staff engagement.",
+        "Designed a scalable collection pipeline with automated scheduling, multilingual support, and session management to improve participation and data quality.",
+        "Built a secure NestJS REST API integrated with Looker Studio using a custom connector to enable interactive dashboards and automated reporting for stakeholders.",
+        "Collaborated with program teams to define KPIs and surface actionable insights through dashboards and reports."
+      ]
+    },
+    {
+      "name": "360Ground",
+      "position": "Senior Software Engineer",
+      "startDate": "Oct 2023",
+      "endDate": "Apr 2025",
+      "highlights": [
+        "Led architecture and implementation of microservices for national statistics and market information projects, working closely with international partners and government teams.",
+        "Built dashboards and mobile components for improved data collection and public access to statistical information.",
+        "Implemented real-time features for a live TV show and associated audience interaction systems designed to support large concurrent user traffic.",
+        "Planned and executed migrations from cloud to on-premise infrastructure to reduce operational costs and meet data sovereignty requirements."
+      ]
+    },
+    {
+      "name": "SoftDeveloper",
+      "position": "Backend Developer",
+      "startDate": "Jun 2023",
+      "endDate": "Oct 2023",
+      "highlights": [
+        "Built and documented RESTful APIs for 'Suitor' CRM, automating communications and streamlining order workflows for a rental business client.",
+        "Implemented batch ordering and automated report generation to reduce manual work and improve operational efficiency."
+      ]
+    },
+    {
+      "name": "Meklit Technologies",
+      "position": "Software Engineer",
+      "startDate": "Apr 2022",
+      "endDate": "May 2023",
+      "highlights": [
+        "Developed a full-stack sports analytics application to manage tracking and scheduling workflows and integrate automated analysis for faster insights.",
+        "Authored system documentation including SRS and high-level architecture artifacts to align multiple teams around project goals."
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "name": "Languages",
+      "keywords": ["TypeScript", "JavaScript", "Python", "Java"]
+    },
+    {
+      "name": "Frontend",
+      "keywords": ["React", "Next.js", "Vue.js", "Angular"]
+    },
+    {
+      "name": "Backend",
+      "keywords": ["Node.js", "Express", "NestJS", "Django", "FastAPI"]
+    },
+    {
+      "name": "Mobile",
+      "keywords": ["Flutter"]
+    },
+    {
+      "name": "Databases",
+      "keywords": ["PostgreSQL", "MongoDB", "MySQL", "Redis", "Elasticsearch"]
+    },
+    {
+      "name": "DevOps",
+      "keywords": ["Docker", "AWS", "GitHub Actions", "Nginx", "Cloudflare"]
+    },
+    {
+      "name": "Architecture",
+      "keywords": ["Microservices", "REST/GraphQL APIs", "RabbitMQ"]
+    },
+    {
+      "name": "Analytics",
+      "keywords": ["Looker Studio", "Google BigQuery", "Kibana"]
+    }
+  ],
+  "education": [
+    {
+      "institution": "Addis Ababa Science and Technology University",
+      "studyType": "Bachelor of Science in Software Engineering",
+      "startDate": "2016",
+      "endDate": "Sep 2021",
+      "courses": ["Software Architecture", "Distributed Systems", "Database Design", "Algorithms"]
+    }
+  ]
+}

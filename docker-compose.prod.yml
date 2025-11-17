@@ -1,0 +1,52 @@
+services:
+  web:
+    build:
+      context: ./nextjs
+      target: production
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - PDF_SERVICE_URL=http://pdf-service:8000
+    depends_on:
+      - pdf-service
+    restart: unless-stopped
+
+  pdf-service:
+    build:
+      context: ./pdf-service
+      target: production
+    ports:
+      - "8000:8000"
+    environment:
+      - LOG_LEVEL=info
+      - WORKERS=2
+      - REDIS_URL=redis://redis:6379
+    depends_on:
+      - redis
+    restart: unless-stopped
+
+  redis:
+    image: redis:7-alpine
+    restart: unless-stopped
+    volumes:
+      - redis_data:/data
+
+  nginx:
+    image: nginx:alpine
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+    depends_on:
+      - web
+      - pdf-service
+    restart: unless-stopped
+
+volumes:
+  redis_data:
+
+networks:
+  default:
+    name: resume-portfolio-network

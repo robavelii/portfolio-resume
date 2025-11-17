@@ -1,0 +1,40 @@
+services:
+  web:
+    build:
+      context: ./nextjs
+      target: development
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=development
+      - NEXT_PUBLIC_PDF_SERVICE_URL=http://localhost:8000
+    volumes:
+      - ./nextjs:/app
+      - /app/node_modules
+      - /app/.next
+    depends_on:
+      - pdf-service
+    restart: unless-stopped
+
+  pdf-service:
+    build:
+      context: ./pdf-service
+      target: development
+    ports:
+      - "8000:8000"
+    environment:
+      - LOG_LEVEL=debug
+      - WORKERS=1
+    volumes:
+      - ./pdf-service:/app
+    restart: unless-stopped
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    restart: unless-stopped
+
+networks:
+  default:
+    name: resume-portfolio-dev-network
