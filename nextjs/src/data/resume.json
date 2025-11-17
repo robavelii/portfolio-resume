@@ -6,11 +6,17 @@
     "phone": "(251) 916-416-707",
     "location": "Addis Ababa, Ethiopia",
     "profiles": [
-      { "network": "LinkedIn", "url": "https://linkedin.com/in/robavelii" },
-      { "network": "GitHub", "url": "https://github.com/robavelii" }
+      {
+        "network": "LinkedIn",
+        "url": "https://linkedin.com/in/robavelii"
+      },
+      {
+        "network": "GitHub",
+        "url": "https://github.com/robavelii"
+      }
     ]
   },
-  "summary": "Senior Software Engineer with several years designing and implementing enterprise systems for healthcare, government, and media. Expertise in full-stack development, system architecture, and team collaboration. Delivered multiple production systems and improved operational workflows through targeted technology decisions.",
+  "summary": "Senior Software Engineer with 4+ years designing and implementing enterprise systems for healthcare, government, and media. Expertise in full-stack development, system architecture, and team collaboration. Delivered multiple production systems and improved operational workflows through targeted technology decisions.",
   "work": [
     {
       "name": "Mereb Technologies",
@@ -73,35 +79,73 @@
   "skills": [
     {
       "name": "Languages",
-      "keywords": ["TypeScript", "JavaScript", "Python", "Java"]
+      "keywords": [
+        "TypeScript",
+        "JavaScript",
+        "Python",
+        "Java"
+      ]
     },
     {
       "name": "Frontend",
-      "keywords": ["React", "Next.js", "Vue.js", "Angular"]
+      "keywords": [
+        "React",
+        "Next.js",
+        "Vue.js",
+        "Angular"
+      ]
     },
     {
       "name": "Backend",
-      "keywords": ["Node.js", "Express", "NestJS", "Django", "FastAPI"]
+      "keywords": [
+        "Node.js",
+        "Express",
+        "NestJS",
+        "Django",
+        "FastAPI"
+      ]
     },
     {
       "name": "Mobile",
-      "keywords": ["Flutter"]
+      "keywords": [
+        "Flutter"
+      ]
     },
     {
       "name": "Databases",
-      "keywords": ["PostgreSQL", "MongoDB", "MySQL", "Redis", "Elasticsearch"]
+      "keywords": [
+        "PostgreSQL",
+        "MongoDB",
+        "MySQL",
+        "Redis",
+        "Elasticsearch"
+      ]
     },
     {
       "name": "DevOps",
-      "keywords": ["Docker", "AWS", "GitHub Actions", "Nginx", "Cloudflare"]
+      "keywords": [
+        "Docker",
+        "AWS",
+        "GitHub Actions",
+        "Nginx",
+        "Cloudflare"
+      ]
     },
     {
       "name": "Architecture",
-      "keywords": ["Microservices", "REST/GraphQL APIs", "RabbitMQ"]
+      "keywords": [
+        "Microservices",
+        "REST/GraphQL APIs",
+        "RabbitMQ"
+      ]
     },
     {
       "name": "Analytics",
-      "keywords": ["Looker Studio", "Google BigQuery", "Kibana"]
+      "keywords": [
+        "Looker Studio",
+        "Google BigQuery",
+        "Kibana"
+      ]
     }
   ],
   "education": [
@@ -110,7 +154,12 @@
       "studyType": "Bachelor of Science in Software Engineering",
       "startDate": "2016",
       "endDate": "Sep 2021",
-      "courses": ["Software Architecture", "Distributed Systems", "Database Design", "Algorithms"]
+      "courses": [
+        "Software Architecture",
+        "Distributed Systems",
+        "Database Design",
+        "Algorithms"
+      ]
     }
   ]
 }

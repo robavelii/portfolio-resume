@@ -7,10 +7,12 @@ from contextlib import asynccontextmanager
 from services.pdf_generator import generate_pdf_from_html
 from services.cache import get_cached_pdf, cache_pdf
 from utils.security import sanitize_html
+from typing import Dict, Any, Optional
 import logging
 import time
 import os
 import uuid
+import json
 
 # Configure logging
 log_level = os.getenv("LOG_LEVEL", "INFO").upper()
@@ -26,10 +28,26 @@ class PDFRequest(BaseModel):
     filename: str = Field("document.pdf", max_length=255)
     page_size: str = Field("A4", pattern="^(A3|A4|A5|Letter|Legal)$")
     margin: str = Field("0.5in", pattern="^\\d+(\\.\\d+)?(in|mm|cm|px)$")
+
+class ResumeDataRequest(BaseModel):
+    resume_data: Dict[str, Any] = Field(...)
+    filename: str = Field("resume.pdf", max_length=255)
+    page_size: str = Field("A4", pattern="^(A3|A4|A5|Letter|Legal)$")
+    margin: str = Field("0.5in", pattern="^\\d+(\\.\\d+)?(in|mm|cm|px)$")
     
     @validator("filename")
     def validate_filename(cls, v):
         # Remove any path traversal attempts
+        return os.path.basename(v)
+
+class ResumeDataRequest(BaseModel):
+    resume_data: Dict[str, Any] = Field(...)
+    filename: str = Field("resume.pdf", max_length=255)
+    page_size: str = Field("A4", pattern="^(A3|A4|A5|Letter|Legal)$")
+    margin: str = Field("0.5in", pattern="^\\d+(\\.\\d+)?(in|mm|cm|px)$")
+    
+    @validator("filename")
+    def validate_filename(cls, v):
         return os.path.basename(v)
 
     @validator("html")
@@ -163,6 +181,81 @@ async def generate_pdf(request: PDFRequest, req: Request):
         raise HTTPException(
             status_code=500,
             detail="An unexpected error occurred while generating the PDF"
+        )
+
+@app.post("/api/resume-pdf")
+async def generate_resume_pdf(request: ResumeDataRequest, req: Request):
+    """
+    Generate a PDF from resume data
+    
+    Args:
+        request: ResumeDataRequest containing resume data and options
+        req: FastAPI Request object for client info
+        
+    Returns:
+        StreamingResponse with PDF content
+    """
+    try:
+        from services.resume_template import generate_resume_html
+        
+        start_time = time.time()
+        request_id = str(uuid.uuid4())
+        
+        logger.info(
+            f"Resume PDF generation request [ID: {request_id}] - "
+            f"Filename: {request.filename}, "
+            f"Client: {req.client.host if req.client else 'unknown'}"
+        )
+        
+        # Generate HTML from resume data
+        html_content = generate_resume_html(request.resume_data)
+        
+        # Check cache first
+        cache_key = json.dumps(request.resume_data, sort_keys=True)
+        cached_pdf = await get_cached_pdf(cache_key)
+        if cached_pdf:
+            logger.info(f"Resume PDF retrieved from cache [ID: {request_id}]")
+            generation_time = time.time() - start_time
+            logger.info(f"Resume PDF generation completed in {generation_time:.2f}s [ID: {request_id}]")
+            
+            return StreamingResponse(
+                content=iter([cached_pdf]),
+                media_type="application/pdf",
+                headers={
+                    "Content-Disposition": f'attachment; filename="{request.filename}"',
+                    "X-Request-ID": request_id,
+                    "X-Cache": "HIT"
+                }
+            )
+        
+        # Generate PDF
+        pdf_bytes = await generate_pdf_from_html(
+            html_content,
+            page_size=request.page_size,
+            margin=request.margin
+        )
+        
+        # Cache the PDF
+        await cache_pdf(cache_key, pdf_bytes)
+        
+        generation_time = time.time() - start_time
+        logger.info(f"Resume PDF generated and cached in {generation_time:.2f}s [ID: {request_id}]")
+        
+        return StreamingResponse(
+            content=iter([pdf_bytes]),
+            media_type="application/pdf",
+            headers={
+                "Content-Disposition": f'attachment; filename="{request.filename}"',
+                "X-Request-ID": request_id,
+                "X-Cache": "MISS"
+            }
+        )
+        
+    except Exception as e:
+        logger.exception(f"Unexpected error generating resume PDF: {str(e)}")
+        raise HTTPException(
+            status_code=500,
+            detail="An unexpected error occurred while generating the resume PDF"
         )
 
 @app.exception_handler(429)

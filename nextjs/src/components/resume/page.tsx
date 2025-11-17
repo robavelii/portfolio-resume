@@ -1,8 +1,12 @@
+"use client";
+
 import { ResumePreview } from "@/components/resume/ResumePreview";
 import { Button } from "@/components/ui/Button";
+import { useSession } from "next-auth/react";
 import Link from "next/link";
 
 export default function ResumePage() {
+  const { data: session } = useSession();
   
   return (
     <div className="container mx-auto px-4 py-8">
@@ -14,9 +18,11 @@ export default function ResumePage() {
           </p>
         </div>
         <div className="flex flex-wrap gap-2">
-          <Button asChild variant="outline">
-            <Link href="/resume/editor">Edit Resume</Link>
-          </Button>
+          {session && (
+            <Button asChild variant="outline">
+              <Link href="/admin">Edit Resume</Link>
+            </Button>
+          )}
           <Button asChild>
             <Link href="/api/generate-pdf">Download PDF</Link>
           </Button>
