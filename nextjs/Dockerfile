@@ -6,7 +6,7 @@ ENV NODE_ENV=production
 # Dependencies stage
 FROM base AS deps
 COPY package.json package-lock.json ./
-RUN npm ci --production
+RUN npm ci --only=production
 
 # Builder stage
 FROM base AS builder
