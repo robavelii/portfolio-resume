@@ -7,6 +7,7 @@ services:
       - "3000:3000"
     environment:
       - NODE_ENV=development
+      - PDF_SERVICE_URL=http://pdf-service:8000
       - NEXT_PUBLIC_PDF_SERVICE_URL=http://localhost:8000
     volumes:
       - ./nextjs:/app
