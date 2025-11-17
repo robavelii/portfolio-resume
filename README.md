@@ -333,14 +333,5 @@ docker-compose down -v
 ## 📜 License
 This project is licensed under the MIT License - see the LICENSE file for details.
 
-## 🙏 Acknowledgments
-- **Next.js** team for the amazing framework
-- **FastAPI** for the high-performance Python framework
-- **WeasyPrint** for PDF generation capabilities
-- **Tailwind CSS** for the utility-first CSS framework
-- **NextAuth.js** for seamless authentication
-- **Prisma** for excellent database tooling
-- **Google** for OAuth services
-
 ## 📞 Support
-For support, email robelfekadu@gmail.com or open an issue in the repository.
+For support, email robaveliii@gmail.com or open an issue in the repository.
